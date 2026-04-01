@@ -9,14 +9,14 @@
 //  measurementId: "G-G0J7EQCZPC"
 //};
 
- const firebaseConfig = {
-   apiKey: "AIzaSyDJLptGH0IFRuO6S2-90-VciqZcKcDFuik",
-   authDomain: "iml300-fall25.firebaseapp.com",
-   projectId: "iml300-fall25",
-   storageBucket: "iml300-fall25.firebasestorage.app",
-   messagingSenderId: "399849667098",
-   appId: "1:399849667098:web:81ff8c6a7af40d321cefa3",
- };
+const firebaseConfig = {
+  apiKey: "AIzaSyBxF3y4JcRZ6qSzIGaNtVSQwRXQ0t3Kg3w",
+  authDomain: "iml300-firebase-demo-fall20252.firebaseapp.com",
+  projectId: "iml300-firebase-demo-fall20252",
+  storageBucket: "iml300-firebase-demo-fall20252.firebasestorage.app",
+  messagingSenderId: "971469607012",
+  appId: "1:971469607012:web:ee278f60b607eceb3d8f71",
+};
 
 firebase.initializeApp(firebaseConfig);
 
@@ -27,14 +27,12 @@ let dbRef = db.ref("text");
 //    name: "q",
 //    word: "hello"
 //  }
- 
-// dbRef.push(data);
 
+// dbRef.push(data);
 
 let chatContainer = document.getElementById("chat-container");
 let entry = document.getElementById("text-input-entry");
 let share = document.getElementById("text-input-submit");
-
 
 dbRef.on("child_added", gotText);
 

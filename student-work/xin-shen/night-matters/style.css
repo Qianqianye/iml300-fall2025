@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* 只给首页用：锁死一屏，不滚动 */
+.home-no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+@font-face {
+  font-family: "臺灣新細明體";
+  src: url("Asset/臺灣新細明體.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  background: #af0000; /* 整体红底，可之后再调色 */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color: #000;
+}
+
+/* ---------- 顶部导航：深棕 sticky banner ---------- */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 56px;
+  padding: 0 24px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  background: #ffffff;
+  color: #9f0000;
+  font-size: 20px;
+  font-weight: 1000;
+  letter-spacing: 0.08em;
+  z-index: 1000;
+}
+
+.logo-left {
+  flex: 0 0 auto;
+}
+
+/* 居中的「華夜」logo */
+.logo-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* 右侧导航区域保持不变，只是里面改成 button */
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* 关键：全部继承 header 的字体设定 */
+  font-family: inherit;       /* ✅ 跟 NIGHT MATTERS 一样的字体 */
+  font-size: inherit;         /* 20px */
+  font-weight: inherit;       /* 1000 */
+  letter-spacing: inherit;    /* 0.08em */
+  color: inherit;             /* #9f0000 */
+
+  text-transform: uppercase;
+
+  /* 去掉默认按钮样式（mac 上尤其明显） */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
+/* 点击后可以用 open 做一些小变化（可选） */
+.menu-button.open {
+  opacity: 0.7;
+}
+
+/* ========= 弹出菜单背景 ========= */
+
+.menu-bg {
+  position: fixed;
+  inset: 0;                          /* top/right/bottom/left 全部 0 */
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 800;                      /* 在内容上面、header 下面 */
+}
+
+.menu-bg.cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========= 弹出菜单本体 ========= */
+
+.menu {
+  position: fixed;
+  top: 56px;                         /* 贴在 header 下边 */
+  right: 0;
+  width: 220px;
+  padding: 24px 20px;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: right;
+
+  transform: translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 900;
+}
+
+.menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d60000;
+}
+
+.menu a:hover {
+  opacity: 0.7;
+}
+
+
+
+
+
+/* ---------- Collage 主体 ---------- */
+
+.collage-wrapper {
+  padding-top: 56px;                 /* 跟 header 高度一致 */
+  height: calc(100vh - 56px);        /* 剩下的高度全部给 collage */
+  display: flex;
+  justify-content: center;
+  align-items: center;               /* 垂直居中整块 collage */
+  overflow: hidden;                  /* 超出的部分裁掉，不制造滚动条 */
+}
+
+
+.collage {
+  position: relative;
+  width: min(90vw, 1100px); /* 随窗口缩放 */
+  aspect-ratio: 16 / 10;
+}
+
+/* 每一张 Collage 卡片 */
+.collage-item {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.7);
+}
+
+.collage-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 布局：你原来那套，我帮你保留 */
+.item1 {
+  width: 50%;
+  top: 13%;
+  left: -5%;
+  z-index: 2;
+}
+
+.item2 {
+  width: 25%;
+  top: 8%;
+  left: 35%;
+  z-index: 5;
+}
+
+.item3 {
+  width: 40%;
+  top: 30%;
+  right: -10%;
+  z-index: 2;
+}
+
+.item4 {
+  width: 24%;
+  top: 45%;
+  left: 20%;
+  z-index: 3;
+}
+
+.item5 {
+  width: 32%;
+  top: 20%;
+  left: 40%;
+  z-index: 1;
+}
+
+.item6 {
+  width: 30%;
+  top: 70%;
+  left: 70%;
+  z-index: 4;
+}
+
+.item7 {
+  width: 30%;
+  top: 60%;
+  left: -10%;
+  z-index: 3;
+}
+
+.item8 {
+  width: 25%;
+  top: 5%;
+  left: 60%;
+  z-index: 4;
+}
+
+/* ---------- 华笙 金属大字 ---------- */
+
+/* ---------- 华笙 title 图片：在所有 collage 上面 ---------- */
+
+.big-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 999;        /* 确保盖在所有 collage 图片上 */
+  pointer-events: none; /* 不遮挡下面的 hover / 点击 */
+}
+
+.big-title img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;          /* ✅ 图片大小在这里调，想更大就 70%，想更小就 40% */
+  height: auto;
+}

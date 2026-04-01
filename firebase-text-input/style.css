@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-/*     background-color: yellow; */
+  /*     background-color: yellow; */
   margin: 30px;
   text-align: center;
 }
@@ -18,23 +18,23 @@ input {
   margin-bottom: 20px;
 }
 
-#chat-container{
+#chat-container {
   font-size: 30px;
-/*   background-color: yellow; */
-  
-  margin:auto;
-  width:70vw;
+  /*   background-color: yellow; */
+
+  margin: auto;
+  width: 70vw;
   display: grid;
-  grid-template-columns: auto auto  auto; 
+  grid-template-columns: auto auto auto;
 }
 
-.response{
+.response {
   background-color: #b299ed;
-  color:white;
-  margin:0.2em;
+  color: white;
+  margin: 0.2em;
   padding: 1em;
   border-radius: 15px;
   box-shadow: 0 0 50px #fff;
-  
+
   /*   border: 1px solid white; */
 }
